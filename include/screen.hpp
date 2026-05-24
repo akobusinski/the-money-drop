@@ -4,16 +4,16 @@
 class BaseScreen {
     public:
         virtual ~BaseScreen() = default;
-        virtual ScreenAction Update() = 0;
+        virtual ScreenAction Show() = 0;
 };
 
 
 class GameScreen : public BaseScreen {
     public:
-        ScreenAction Update() override;
+        ScreenAction Show() override;
 };
 
 class MainScreen : public BaseScreen {
     public:
-        ScreenAction Update() override;
+        ScreenAction Show() override;
 };

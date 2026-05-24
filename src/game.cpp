@@ -12,7 +12,7 @@ Game::Game() {
 
 void Game::run() {
     while (!this->m_MenuHistory.empty()) {
-        ScreenAction action = this->m_MenuHistory.top()->Update();
+        ScreenAction action = this->m_MenuHistory.top()->Show();
 
         std::visit(overloaded {
             [&](CloseScreen) {

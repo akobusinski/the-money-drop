@@ -1,7 +1,7 @@
 #include <print>
 #include "screen.hpp"
 
-ScreenAction MainScreen::Update() {
+ScreenAction MainScreen::Show() {
     std::println("hi");
     return PushScreen { std::make_unique<GameScreen>() };
 }
