@@ -19,7 +19,7 @@ add_custom_command(
             ${QUESTIONS_SOURCE}
             ${QUESTIONS_HEADER}
     DEPENDS
-        # ${QUESTIONS_SOURCE}
+        ${QUESTIONS_SOURCE}
         ${GENERATE_QUESTIONS_SCRIPT}
     COMMENT "Generating include/questions.hpp"
     VERBATIM
