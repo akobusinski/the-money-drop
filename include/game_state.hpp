@@ -23,6 +23,7 @@ class GameState {
         ~GameState() = default;
 
         void Save();
+        static bool SaveExists();
     private:
         uint32_t m_Money;
         std::array<std::pair<CategorisedQuestion, CategorisedQuestion>, k_QuestionsCount> m_Questions;
