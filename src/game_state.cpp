@@ -43,14 +43,3 @@ void GameState::Save() {
     auto savefile = g_DataDirectory.append(k_SavefileName);
     // TODO: save sum
 }
-
-bool GameState::SaveExists() {
-    if (!std::filesystem::is_directory(g_DataDirectory))
-        return false;
-    
-    auto savefile = g_DataDirectory.append(k_SavefileName);
-    if (!std::filesystem::is_regular_file(savefile))
-        return false;
-    
-    return true;
-}

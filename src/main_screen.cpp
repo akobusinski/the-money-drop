@@ -2,6 +2,7 @@
 #include <vector>
 #include <print>
 #include <span>
+#include <optional>
 #include "screen.hpp"
 #include "game_state.hpp"
 #include "menu.hpp"
@@ -29,8 +30,8 @@ ScreenAction MainScreen::Show() {
     std::println("Gra Postaw Na Milion");
     std::println();
 
-    bool save_file_exists = GameState::SaveExists();
-    auto options = create_options(save_file_exists);
+    auto saved_state = GameState::TryLoad();
+    auto options = create_options(saved_state.has_value());
     MenuOption chosen = ChooseFromMenu("Prosze wybrac jedna z opcji:", std::span { options });
 
     switch (chosen) {
@@ -38,7 +39,8 @@ ScreenAction MainScreen::Show() {
             return PushScreen { std::make_unique<GameScreen>() };
         case MenuOption::Resume:
             std::println("not implemented");
-            return CloseScreen {};
+            // TODO: Pass `saved_state` into the screen
+            return PushScreen { std::make_unique<GameScreen>() };
         case MenuOption::Exit:
             return CloseScreen {};
     }
