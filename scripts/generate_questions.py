@@ -1,6 +1,6 @@
 #!/bin/env python3
 
-from typing import Dict, List, Iterable
+from typing import Dict, List, Iterable, TypedDict
 from dataclasses import dataclass
 from enum import IntEnum
 import itertools
@@ -33,6 +33,12 @@ class Question:
     question: str
     answers: List[str]
     correct: int # 0-based index
+
+class DefinedQuestion(TypedDict):
+    category: int
+    question: str
+    answers:  List[str]
+    correct:  int # 0-based index
 
 class HeaderGenerator:
     def __init__(self, categories: Dict[QuestionCategory, List[Question]]) -> None:
@@ -116,15 +122,25 @@ class HeaderGenerator:
         ))
 
 def read_questions(path: pathlib.Path) -> Dict[QuestionCategory, List[Question]]:
-    questions = {}
+    questions: Dict[QuestionCategory, List[Question]] = {}
 
     with open(path, "r") as f:
-        line = f.readline()
-        if not line:
-            return questions
+        while (line := f.readline()):
+            data: DefinedQuestion = json.loads(line)
+            category = QuestionCategory(data["category"])
+
+            if category not in questions:
+                questions[category] = []
         
-        data = json.loads(line)
-        data[]
+            questions[category].append(Question(
+                question=data["question"],
+                answers=data["answers"],
+                correct=data["correct"],
+            ))
+    
+    return questions
+    
+
 
 def main():
     argv = sys.argv
