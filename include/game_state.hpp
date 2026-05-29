@@ -31,7 +31,8 @@ class GameState {
         }
 
         void Save() const;
-        [[nodiscard]] const std::vector<CategorisedQuestion>* GetCurrentRoundQuestions();
+        void NextRound();
+        [[nodiscard]] const std::vector<CategorisedQuestion>* GetCurrentRoundQuestions() const;
 
         [[nodiscard]] std::size_t Round() const {
             return this->m_CurrentRound;

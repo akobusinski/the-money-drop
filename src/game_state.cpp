@@ -57,7 +57,7 @@ GameState::GameState() : m_Money(k_StartingMoney), m_CurrentRound(0) {
             ++question;
         }
 
-        m_Rounds.emplace_back(questions);
+        this->m_Rounds.emplace_back(questions);
     }
 }
 
@@ -151,16 +151,16 @@ void GameState::Save() const {
     if (!file) return;
 
     std::size_t questions_per_round = 0;
-    if (!m_Rounds.empty()) {
-        questions_per_round = m_Rounds.front().size();
+    if (!this->m_Rounds.empty()) {
+        questions_per_round = this->m_Rounds.front().size();
     }
 
-    file << m_Money << ' '
-         << m_CurrentRound << ' '
-         << m_Rounds.size() << ' '
+    file << this->m_Money << ' '
+         << this->m_CurrentRound << ' '
+         << this->m_Rounds.size() << ' '
          << questions_per_round << '\n';
 
-    for (const auto &round : m_Rounds) {
+    for (const auto &round : this->m_Rounds) {
         for (const auto &[category, question] : round) {
             file << question.answers.size() << ' '
                  << static_cast<std::uint16_t>(category) << ' '
@@ -175,10 +175,14 @@ void GameState::Save() const {
     }
 }
 
-const std::vector<CategorisedQuestion>* GameState::GetCurrentRoundQuestions() {
-    if (m_CurrentRound < 0 || m_CurrentRound >= m_Rounds.size()) {
+void GameState::NextRound() {
+    this->m_CurrentRound++;
+}
+
+const std::vector<CategorisedQuestion>* GameState::GetCurrentRoundQuestions() const {
+    if (this->m_CurrentRound < 0 || this->m_CurrentRound >= this->m_Rounds.size()) {
         return nullptr;
     }
 
-    return &m_Rounds[m_CurrentRound++];
+    return &this->m_Rounds[this->m_CurrentRound];
 }
