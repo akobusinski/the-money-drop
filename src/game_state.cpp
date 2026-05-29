@@ -61,8 +61,6 @@ GameState::GameState() : m_Money(k_StartingMoney), m_CurrentRound(0) {
     }
 }
 
-// TODO: Check if these two actually work LOL
-
 // The save file looks something like this:
 // <money> <current_round> <max_rounds> <questions_per_round>
 // <answer_count> <category> <correct_answer>
