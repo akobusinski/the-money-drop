@@ -27,7 +27,7 @@ std::filesystem::path GetDataDirectory(const std::string &name) {
 }
 
 const std::filesystem::path g_DataDirectory = GetDataDirectory("postaw-na-milion");
-const std::filesystem::path g_SaveFilePath  = g_DataDirectory / k_SaveFileName; // TODO: check if this isnt undefined behaviour lol
+const std::filesystem::path g_SaveFilePath  = g_DataDirectory / k_SaveFileName;
 
 GameState::GameState() : m_Money(k_StartingMoney), m_CurrentRound(0) {
     static std::random_device rd;
