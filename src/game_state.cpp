@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <utility>
 #include "game_state.hpp"
 #include "questions.hpp"
 
@@ -31,33 +32,83 @@ const std::filesystem::path g_SaveFilePath  = g_DataDirectory / k_SaveFileName; 
 GameState::GameState() : m_Money(k_StartingMoney), m_CurrentRound(0) {
     static std::random_device rd;
     static std::mt19937 rng(rd());
+    constexpr std::size_t questions_count = (k_FourAnswerRoundCount + k_ThreeAnswerRoundCount + k_TwoAnswerRoundCount) * k_CategoriesPerRound;
+    // this array makes two assumptions,
+    // `max_answers` is descending with every next item (array[i].max_answers > array[i + 1].max_answers)
+    // `max_answers` is NEVER more than the amount of answers in ANY question in the `container`
+    constexpr auto question_generation_stages = std::array {
+        GenerationStage {
+            .round_count = k_FourAnswerRoundCount,
+            .container = QUESTIONS_FOUR_ANSWERS,
+            .max_answers = 4,
+        },
+        GenerationStage {
+            .round_count = k_ThreeAnswerRoundCount,
+            .container = QUESTIONS_THREE_ANSWERS,
+            .max_answers = 3,
+        },
+        GenerationStage {
+            .round_count = k_TwoAnswerRoundCount,
+            .container = QUESTIONS_TWO_ANSWERS,
+            .max_answers = 2,
+        },
+    };
+
+    this->m_Rounds.reserve(questions_count);
     
-    std::vector<std::pair<QuestionCategory, StaticQuestion>> random_questions;
-    constexpr std::size_t questions_count = k_CategoriesPerRound * k_Rounds;
-    random_questions.reserve(questions_count);
+    std::vector<std::pair<QuestionCategory, StaticQuestion>> question_pool;
+    std::size_t required_pool_space = 0;
 
-    // populate the vector with `k_CategoriesPerRound` * `k_Rounds` random questions, without them repeating
-    std::ranges::sample(
-        ALL_QUESTIONS,
-        std::back_inserter(random_questions),
-        questions_count,
-        rng
-    );
+    for (const auto &[round_count, container, max_answers] : question_generation_stages) {
+        required_pool_space += container.size();
+        question_pool.reserve(required_pool_space);
+        question_pool.append_range(container);
 
-    this->m_Rounds.reserve(k_Rounds);
-    auto question = random_questions.begin();
+        std::ranges::shuffle(question_pool, rng);
 
-    for (std::size_t round = 0; round < k_Rounds; round++) {
-        std::vector<CategorisedQuestion> questions;
-        questions.reserve(k_CategoriesPerRound);
+        for (std::size_t round = 0; round < round_count; round++) {
+            std::vector<CategorisedQuestion> categories;
+            categories.reserve(k_CategoriesPerRound);
 
-        // i hate this
-        for (std::size_t category = 0; category < k_CategoriesPerRound; category++) {
-            questions.emplace_back(question->first, OwnedQuestion { question->second });
-            ++question;
+            for (std::size_t i = 0; i < k_CategoriesPerRound; i++) {
+                const auto &[category, question] = question_pool.back();
+                question_pool.pop_back();
+
+                std::vector<std::string> answers;
+                answers.reserve(max_answers);
+                answers.emplace_back(question.correct_answer);
+
+                std::vector<std::string> wrong_answers;
+                wrong_answers.reserve(question.answer_count - 1); // takes only non empty answers out of the question.wrong_answers array
+                for (std::size_t index = 0; index < question.answer_count - 1; index++) {
+                    wrong_answers.emplace_back(question.wrong_answers[index]); // additionally copy them
+                }
+
+                std::ranges::sample( // take out random, incorrect answers
+                    wrong_answers,
+                    std::back_inserter(answers),
+                    max_answers - 1, // remove one, since we already added the correct answer
+                    rng
+                );
+
+                const std::string correct_answer = answers.front(); // correct answer is always first
+                std::ranges::shuffle(answers, rng); // shuffle them again, so the correct answer isn't always first
+                const std::size_t correct_answer_index = std::distance( // find the correct answer again
+                    answers.begin(),
+                    std::ranges::find(answers, correct_answer)
+                );
+
+                categories.emplace_back(category, OwnedQuestion {
+                    std::string(question.question),
+                    answers,
+                    correct_answer_index,
+                });
+            }
+
+            this->m_Rounds.push_back(categories);
         }
 
-        this->m_Rounds.emplace_back(questions);
+        required_pool_space -= round_count * k_CategoriesPerRound;
     }
 }
 

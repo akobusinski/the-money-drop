@@ -40,6 +40,51 @@ class DefinedQuestion(TypedDict):
     answers:  List[str]
     correct:  int # 0-based index
 
+@dataclass
+class Assertion:
+    count_constant: str
+    message: str
+
+@dataclass
+class ContainerGeneration:
+    container_name: str
+    max_answers: int
+    assertion: Assertion
+
+PREAMBLE = [
+    "#pragma once",
+    "#include <array>",
+    "#include <string_view>",
+    "#include \"game_state.hpp\"",
+]
+
+GENERATIONS = [
+    ContainerGeneration(
+        "QUESTIONS_FOUR_ANSWERS",
+        4,
+        Assertion(
+            "k_FourAnswerRoundCount",
+            "Not enough questions with at least four answers to start a single game.",
+        ),
+    ),
+    ContainerGeneration(
+        "QUESTIONS_THREE_ANSWERS",
+        3,
+        Assertion(
+            "k_ThreeAnswerRoundCount",
+            "Not enough questions with at least three answers to start a single game.",
+        ),
+    ),
+    ContainerGeneration(
+        "QUESTIONS_TWO_ANSWERS",
+        2,
+        Assertion(
+            "k_TwoAnswerRoundCount",
+            "Not enough questions with at least two answers to start a single game.",
+        ),
+    ),
+]
+
 class HeaderGenerator:
     def __init__(self, categories: Dict[QuestionCategory, List[Question]]) -> None:
         self.content = ""
@@ -47,9 +92,12 @@ class HeaderGenerator:
 
     def generate(self):
         if (len(self.content) == 0):
-            self.generate_preamble()
-            self.generate_questions_array()
-            self.generate_assertion()
+            self.append(PREAMBLE)
+
+            for generation in GENERATIONS:
+                self.generate_questions_array(generation.container_name, generation.max_answers)
+
+            self.generate_assertions()
 
         return self.content
 
@@ -59,45 +107,69 @@ class HeaderGenerator:
         
         self.content += '\n'
     
-    def generate_preamble(self):
-        self.append((
-            "#pragma once",
-            "#include <array>",
-            "#include <string_view>",
-            "#include \"question.hpp\"",
-        ))
-    
-    def generate_questions_array(self):
+    def generate_questions_array(self, name: str, answer_count: int):
+        questions = list(self.questions_with_answer_count(answer_count))
+
+        if len(questions) == 0:
+            self.append((
+                "constexpr const auto %s = std::array<std::pair<QuestionCategory, StaticQuestion>, 0> {};" % name,
+            ))
+            return
+
         self.append(itertools.chain(
-            ("constexpr const auto ALL_QUESTIONS = std::array {",),
+            ("constexpr const auto %s = std::array {" % name,),
             (
-                "\tstd::pair { QuestionCategory::%s, StaticQuestion { \"%s\", std::array<std::string_view, k_MaxAnswers> { %s }, %d, %d } },"
-                % (
-                    category,
-                    question.question,
-                    ", ".join(f"\"{i}\"" for i in question.answers),
-                    len(question.answers),
-                    question.correct
-                )
-                for (category, questions) in self.categories.items()
-                for question in questions
+                self.generate_question_entry(category, question)
+                for (category, question) in questions
             ),
             ("};",),
         ))
-    
-    def generate_assertion(self):
-        self.append((
-            "static_assert(",
-            "\tk_Rounds * k_CategoriesPerRound <= ALL_QUESTIONS.size(),",
-            "\t\"Not enough questions to start a single game.\"",
-            ");",
-        ))
+
+    def generate_question_entry(self, category: QuestionCategory, question: Question):
+        answer_count = len(question.answers)
+        correct_answer = question.answers[question.correct]
+        wrong_answers = [
+            answer
+            for index, answer in enumerate(question.answers)
+            if index != question.correct
+        ]
+
+        return "\tstd::pair { QuestionCategory::%s, StaticQuestion { \"%s\", \"%s\", std::array<std::string_view, k_MaxAnswers - 1> { %s }, %d } }," % (
+            category,
+            question.question,
+            correct_answer,
+            ", ".join(f"\"{answer}\"" for answer in wrong_answers),
+            answer_count,
+        )
+
+    def questions_with_answer_count(self, answer_count: int):
+        return (
+            (category, question)
+            for (category, questions) in self.categories.items()
+            for question in questions
+            if len(question.answers) == answer_count
+        )
+
+    def generate_assertions(self):
+        count_list: List[str] = []
+        container_list: List[str] = []
+
+        for generation in GENERATIONS:
+            count_list.append(generation.assertion.count_constant)
+            container_list.append(f"{generation.container_name}.size()")
+            self.append((
+                "static_assert(",
+                f"\t({' + '.join(count_list)}) * k_CategoriesPerRound",
+                f"\t\t<= {' + '.join(container_list)},",
+                f"\t\"{generation.assertion.message}\"",
+                ");",
+            ))
 
 def read_questions(path: pathlib.Path) -> Dict[QuestionCategory, List[Question]]:
     questions: Dict[QuestionCategory, List[Question]] = {}
 
     with open(path, "r") as f:
-        while (line := f.readline()):
+        while (line := f.readline().strip()):
             data: DefinedQuestion = json.loads(line)
             category = QuestionCategory(data["category"])
 

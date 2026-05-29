@@ -50,21 +50,18 @@ constexpr std::string_view CategoryName(QuestionCategory category) {
     }
 }
 
-// I could instead make `StaticQuestion` a `QuestionView` or something and make `OwnedQuestion` expose a `QuestionView OwnedQuestion::View()` method,
-// but I don't think that's necessary, technically could save some memory, but only for initial game load, since after a load it needs to dynamically reconstruct
-// the questions, so at this stage it's really overengineering the whole thing.
 struct StaticQuestion {
     std::string_view question;
-    std::array<std::string_view, k_MaxAnswers> answers;
+    std::string_view correct_answer;
+    std::array<std::string_view, k_MaxAnswers - 1> wrong_answers;
     std::size_t answer_count;
-    std::size_t correct_answer;
 
     constexpr StaticQuestion(
         const std::string_view question,
-        const std::array<std::string_view, k_MaxAnswers> &answers,
-        const std::size_t answer_count,
-        const std::size_t correct_answer
-    ) : question(question), answers(answers), answer_count(answer_count), correct_answer(correct_answer) {}
+        const std::string_view correct_answer,
+        const std::array<std::string_view, k_MaxAnswers - 1> &wrong_answers,
+        const std::size_t answer_count
+    ) : question(question), correct_answer(correct_answer), wrong_answers(wrong_answers), answer_count(answer_count) {}
 };
 
 struct OwnedQuestion {
@@ -77,15 +74,6 @@ struct OwnedQuestion {
         std::vector<std::string> answers,
         const std::size_t correct_answer
     ) : question(std::move(question)), answers(std::move(answers)), correct_answer(correct_answer) {}
-
-    explicit OwnedQuestion(StaticQuestion other) : correct_answer(other.correct_answer) {
-        this->question = other.question;
-        this->answers.reserve(other.answer_count);
-        
-        for (std::size_t index = 0; index < other.answer_count; index++) {
-            this->answers.emplace_back(other.answers[index]);
-        }
-    }
     
     [[nodiscard]] bool IsCorrect(const size_t index) const {
         return index == this->correct_answer;

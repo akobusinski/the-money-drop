@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <optional>
 #include <filesystem>
+#include <span>
 #include <utility>
 #include <vector>
 #include "question.hpp"
@@ -12,10 +13,20 @@ constexpr const std::size_t           k_Rounds = 8;
 constexpr const std::size_t           k_CategoriesPerRound = 2;
 constexpr const int                   k_StartingMoney = 1'000'000;
 constexpr const std::string_view      k_SaveFileName = "save.file";
+constexpr const std::size_t           k_ThreeQuestionsThreshold = 3;
+constexpr const std::size_t           k_TwoAnswerRoundCount = 1;
+constexpr const std::size_t           k_FourAnswerRoundCount = k_ThreeQuestionsThreshold;
+constexpr const std::size_t           k_ThreeAnswerRoundCount = k_Rounds - k_TwoAnswerRoundCount - k_FourAnswerRoundCount;
 extern    const std::filesystem::path g_DataDirectory;
 extern    const std::filesystem::path g_SaveFilePath;
 
 std::filesystem::path GetDataDirectory(const std::string &name);
+
+struct GenerationStage {
+    std::size_t round_count;
+    std::span<const std::pair<QuestionCategory, StaticQuestion>> container;
+    std::size_t max_answers;
+};
 
 class GameState {
     public:
