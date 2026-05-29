@@ -23,6 +23,7 @@ set(HEADERS
     include/screen.hpp
     include/screen_actions.hpp
     include/menu.hpp
+    include/utils.hpp
 )
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)

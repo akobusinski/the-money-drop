@@ -1,10 +1,7 @@
 #include <variant>
 #include "game.hpp"
 #include "screen.hpp"
-
-// https://en.cppreference.com/cpp/utility/variant/visit2#Example
-template<class... Ts>
-struct overloaded : Ts... { using Ts::operator()...; };
+#include "utils.hpp"
 
 Game::Game() {
     this->m_MenuHistory.push(std::make_unique<MainScreen>());
