@@ -1,2 +1,105 @@
-{ "category": 0, "question": "t/n", "answers": ["tak", "nie"], "correct": 1 }
-{ "category": 1, "question": "t/n", "answers": ["tak", "nie"], "correct": 1 }
+{ "category": 0, "question": "Kto byl pierwszym krolem Polski?", "answers": ["Mieszko I", "Boleslaw Chrobry", "Kazimierz Wielki", "Wladyslaw Jagiello"], "correct": 1 }
+{ "category": 0, "question": "W ktorym roku odbyl sie chrzest Polski?", "answers": ["966", "1000", "1025", "1138"], "correct": 0 }
+{ "category": 0, "question": "Ktora wojna zakonczyla sie traktatem wersalskim?", "answers": ["Wojna secesyjna", "I wojna swiatowa", "II wojna swiatowa", "Wojna krymska"], "correct": 1 }
+{ "category": 0, "question": "Kto dowodzil wojskami polskimi pod Grunwaldem?", "answers": ["Jan III Sobieski", "Wladyslaw Jagiello", "Stefan Batory", "Jozef Pilsudski"], "correct": 1 }
+{ "category": 0, "question": "W ktorym roku upadl mur berlinski?", "answers": ["1979", "1989", "1991", "1999"], "correct": 1 }
+{ "category": 0, "question": "Jak nazywala sie pierwsza dynastia panujaca w Polsce?", "answers": ["Piastowie", "Jagiellonowie", "Wazowie", "Andegawenowie"], "correct": 0 }
+{ "category": 0, "question": "Ktore miasto bylo stolica cesarstwa bizantyjskiego?", "answers": ["Ateny", "Rzym", "Konstantynopol", "Aleksandria"], "correct": 2 }
+{ "category": 1, "question": "Jaka jest najdluzsza rzeka swiata wedlug tradycyjnych pomiarow?", "answers": ["Nil", "Amazonka", "Jangcy", "Missisipi"], "correct": 0 }
+{ "category": 1, "question": "Ktory kraj ma najwieksza powierzchnie na swiecie?", "answers": ["Kanada", "Chiny", "Rosja", "Stany Zjednoczone"], "correct": 2 }
+{ "category": 1, "question": "Na ktorym kontynencie lezy pustynia Sahara?", "answers": ["Azja", "Afryka", "Australia", "Ameryka Polnocna"], "correct": 1 }
+{ "category": 1, "question": "Stolica Wloch to", "answers": ["Mediolan", "Rzym", "Neapol", "Turyn"], "correct": 1 }
+{ "category": 1, "question": "Ktore pasmo gorskie oddziela Europe od Azji?", "answers": ["Alpy", "Karpaty", "Ural", "Pireneje"], "correct": 2 }
+{ "category": 1, "question": "Ktore morze oblewa polskie wybrzeze?", "answers": ["Czarne", "Baltyckie", "Polnocne", "Adriatyckie"], "correct": 1 }
+{ "category": 1, "question": "Najwyzszy szczyt swiata to", "answers": ["K2", "Mount Everest", "Kangchenjunga", "Lhotse"], "correct": 1 }
+{ "category": 2, "question": "Jaki pierwiastek ma symbol O?", "answers": ["Zloto", "Tlen", "Osm", "Wodor"], "correct": 1 }
+{ "category": 2, "question": "Ile planet ma Uklad Sloneczny wedlug obecnej klasyfikacji?", "answers": ["7", "8", "9", "10"], "correct": 1 }
+{ "category": 2, "question": "Kto sformulowal teorie wzglednosci?", "answers": ["Isaac Newton", "Albert Einstein", "Marie Curie", "Niels Bohr"], "correct": 1 }
+{ "category": 2, "question": "Jaka czesc komorki zawiera DNA u organizmow eukariotycznych?", "answers": ["Mitochondrium", "Jadro komorkowe", "Rybosom", "Blona komorkowa"], "correct": 1 }
+{ "category": 2, "question": "Woda wrze przy cisnieniu normalnym w temperaturze", "answers": ["0 C", "50 C", "100 C", "200 C"], "correct": 2 }
+{ "category": 2, "question": "Ktora planeta jest najblizej Slonca?", "answers": ["Wenus", "Merkury", "Mars", "Ziemia"], "correct": 1 }
+{ "category": 2, "question": "Jednostka sily w ukladzie SI to", "answers": ["Dzul", "Niuton", "Wat", "Paskal"], "correct": 1 }
+{ "category": 3, "question": "Ilu zawodnikow jednej druzyny gra na boisku w pilce noznej?", "answers": ["9", "10", "11", "12"], "correct": 2 }
+{ "category": 3, "question": "W jakim sporcie uzywa sie rakiety i lotki?", "answers": ["Tenis", "Badminton", "Squash", "Baseball"], "correct": 1 }
+{ "category": 3, "question": "Ile kol ma standardowy rower?", "answers": ["1", "2", "3", "4"], "correct": 1 }
+{ "category": 3, "question": "Ktore igrzyska odbywaja sie co cztery lata w wersji letniej i zimowej?", "answers": ["Olimpijskie", "Azjatyckie", "Panamerykanskie", "Commonwealth"], "correct": 0 }
+{ "category": 3, "question": "Jak nazywa sie najwazniejszy turniej tenisowy rozgrywany na trawie w Londynie?", "answers": ["Roland Garros", "Wimbledon", "US Open", "Australian Open"], "correct": 1 }
+{ "category": 3, "question": "W ktorym sporcie wystepuje pozycja bramkarza?", "answers": ["Szachy", "Pilka reczna", "Skok wzwyz", "Golf"], "correct": 1 }
+{ "category": 3, "question": "Ile punktow daje rzut za trzy w koszykowce?", "answers": ["1", "2", "3", "4"], "correct": 2 }
+{ "category": 4, "question": "Ktory kompozytor napisal IX symfonie z Oda do radosci?", "answers": ["Mozart", "Beethoven", "Bach", "Chopin"], "correct": 1 }
+{ "category": 4, "question": "Jak nazywa sie instrument z klawiszami i strunami uderzanymi mloteczkami?", "answers": ["Organy", "Fortepian", "Harfa", "Akordeon"], "correct": 1 }
+{ "category": 4, "question": "Ktory zespol nagral album Abbey Road?", "answers": ["The Rolling Stones", "The Beatles", "Queen", "Pink Floyd"], "correct": 1 }
+{ "category": 4, "question": "Jak nazywa sie najwyzszy glos kobiecy?", "answers": ["Alt", "Sopran", "Tenor", "Bas"], "correct": 1 }
+{ "category": 4, "question": "Ile strun ma najczesciej gitara klasyczna?", "answers": ["4", "5", "6", "7"], "correct": 2 }
+{ "category": 4, "question": "Ktory polski kompozytor jest znany z mazurkow i polonezow?", "answers": ["Moniuszko", "Chopin", "Penderecki", "Lutoslawski"], "correct": 1 }
+{ "category": 4, "question": "Tempo largo oznacza gre", "answers": ["szybka", "wolna", "bardzo glosna", "cicha"], "correct": 1 }
+{ "category": 5, "question": "Kto wyrezyserowal film Titanic z 1997 roku?", "answers": ["Steven Spielberg", "James Cameron", "George Lucas", "Ridley Scott"], "correct": 1 }
+{ "category": 5, "question": "Jak nazywa sie czarodziej z blizna w ksztalcie blyskawicy?", "answers": ["Frodo Baggins", "Harry Potter", "Luke Skywalker", "Percy Jackson"], "correct": 1 }
+{ "category": 5, "question": "Ktory serial opowiada o rodzinie z zoltej skory w Springfield?", "answers": ["Simpsonowie", "Family Guy", "Futurama", "South Park"], "correct": 0 }
+{ "category": 5, "question": "W ktorej serii filmowej wystepuje Darth Vader?", "answers": ["Star Trek", "Gwiezdne wojny", "Matrix", "Avatar"], "correct": 1 }
+{ "category": 5, "question": "Oscar to nagroda zwiazana glownie z", "answers": ["literatura", "filmem", "sportem", "architektura"], "correct": 1 }
+{ "category": 5, "question": "Ktory film animowany opowiada o zabawkach Woodym i Buzzcie?", "answers": ["Toy Story", "Shrek", "Auta", "Gdzie jest Nemo"], "correct": 0 }
+{ "category": 5, "question": "Jak nazywa sie fikcyjny kontynent z serialu Gra o tron?", "answers": ["Narnia", "Westeros", "Atlantyda", "Gondor"], "correct": 1 }
+{ "category": 6, "question": "Kto napisal Pana Tadeusza?", "answers": ["Juliusz Slowacki", "Adam Mickiewicz", "Henryk Sienkiewicz", "Boleslaw Prus"], "correct": 1 }
+{ "category": 6, "question": "Autorem Lalki jest", "answers": ["Boleslaw Prus", "Stefan Zeromski", "Eliza Orzeszkowa", "Wladyslaw Reymont"], "correct": 0 }
+{ "category": 6, "question": "Ktory pisarz stworzyl Sherlocka Holmesa?", "answers": ["Agatha Christie", "Arthur Conan Doyle", "Jules Verne", "Mark Twain"], "correct": 1 }
+{ "category": 6, "question": "Nobel literacki dla Polski w 1996 roku otrzymala", "answers": ["Olga Tokarczuk", "Wislawa Szymborska", "Maria Konopnicka", "Zofia Nalkowska"], "correct": 1 }
+{ "category": 6, "question": "Ktora powiesc zaczyna sie od historii Bilba Bagginsa?", "answers": ["Hobbit", "Silmarillion", "Opowiesci z Narnii", "Maly Ksiaze"], "correct": 0 }
+{ "category": 6, "question": "Kto napisal Zemste?", "answers": ["Aleksander Fredro", "Adam Mickiewicz", "Cyprian Norwid", "Jan Kochanowski"], "correct": 0 }
+{ "category": 6, "question": "Maly Ksiaze spotyka lisa w ksiazce autorstwa", "answers": ["Antoine de Saint-Exupery", "Jules Verne", "Victor Hugo", "Albert Camus"], "correct": 0 }
+{ "category": 7, "question": "Co oznacza skrot CPU?", "answers": ["Central Processing Unit", "Computer Personal Utility", "Core Program Update", "Central Power Unit"], "correct": 0 }
+{ "category": 7, "question": "Ktory jezyk jest najczesciej uzywany do stylowania stron internetowych?", "answers": ["HTML", "CSS", "SQL", "Python"], "correct": 1 }
+{ "category": 7, "question": "Co przechowuje adresy stron internetowych w latwej do zapamietania formie?", "answers": ["DNS", "GPU", "RAM", "USB"], "correct": 0 }
+{ "category": 7, "question": "Ktora firma stworzyla system Android?", "answers": ["Apple", "Google", "Microsoft", "IBM"], "correct": 1 }
+{ "category": 7, "question": "Jaki typ pliku czesto ma rozszerzenie .jpg?", "answers": ["Obraz", "Arkusz kalkulacyjny", "Program", "Baza danych"], "correct": 0 }
+{ "category": 7, "question": "Co oznacza skrot URL?", "answers": ["Uniform Resource Locator", "Universal Runtime Library", "User Response Link", "United Router Line"], "correct": 0 }
+{ "category": 7, "question": "Ktory element komputera sluzy do tymczasowego przechowywania danych podczas pracy?", "answers": ["RAM", "Monitor", "Klawiatura", "Drukarka"], "correct": 0 }
+{ "category": 8, "question": "Ile wynosi 7 razy 8?", "answers": ["54", "56", "58", "64"], "correct": 1 }
+{ "category": 8, "question": "Jaka jest wartosc liczby pi w przyblizeniu do dwoch miejsc?", "answers": ["2.14", "3.14", "3.41", "4.13"], "correct": 1 }
+{ "category": 8, "question": "Ile bokow ma szesciokat?", "answers": ["5", "6", "7", "8"], "correct": 1 }
+{ "category": 8, "question": "Pierwiastek kwadratowy z 81 to", "answers": ["7", "8", "9", "10"], "correct": 2 }
+{ "category": 8, "question": "Ile stopni ma kat prosty?", "answers": ["45", "60", "90", "180"], "correct": 2 }
+{ "category": 8, "question": "Wynik dzialania 15 plus 27 to", "answers": ["32", "40", "42", "52"], "correct": 2 }
+{ "category": 8, "question": "Jak nazywa sie liczba podzielna tylko przez 1 i sama siebie?", "answers": ["parzysta", "pierwsza", "ujemna", "wymierna"], "correct": 1 }
+{ "category": 9, "question": "Ktore zwierze jest najwiekszym ssakiem na Ziemi?", "answers": ["Slon afrykanski", "Pletwal blekitny", "Nosorozec", "Orka"], "correct": 1 }
+{ "category": 9, "question": "Jak nazywa sie proces wytwarzania pokarmu przez rosliny z udzialem swiatla?", "answers": ["Oddychanie", "Fotosynteza", "Fermentacja", "Parowanie"], "correct": 1 }
+{ "category": 9, "question": "Ktory ptak nie potrafi latac i zyje na Antarktydzie?", "answers": ["Pingwin", "Strus", "Kiwi", "Emu"], "correct": 0 }
+{ "category": 9, "question": "Ile nog ma pajak?", "answers": ["6", "8", "10", "12"], "correct": 1 }
+{ "category": 9, "question": "Ktore drzewo daje zoledzie?", "answers": ["Brzoza", "Dab", "Sosna", "Klon"], "correct": 1 }
+{ "category": 9, "question": "Jak nazywa sie grupa lwow?", "answers": ["Stado", "Lawica", "Roj", "Wataha"], "correct": 0 }
+{ "category": 9, "question": "Ktore zwierze ma najdluzsza szyje?", "answers": ["Zyrafa", "Wielblad", "Lama", "Antylopa"], "correct": 0 }
+{ "category": 10, "question": "Z jakiego kraju pochodzi sushi?", "answers": ["Chiny", "Japonia", "Korea", "Tajlandia"], "correct": 1 }
+{ "category": 10, "question": "Podstawowym skladnikiem guacamole jest", "answers": ["pomidor", "awokado", "ogorek", "cukinia"], "correct": 1 }
+{ "category": 10, "question": "Ktory ser jest tradycyjnie uzywany do pizzy margherita?", "answers": ["Cheddar", "Mozzarella", "Feta", "Gouda"], "correct": 1 }
+{ "category": 10, "question": "Pierogi ruskie najczesciej zawieraja", "answers": ["mieso", "ziemniaki i twarog", "ryz", "kapuste i grzyby"], "correct": 1 }
+{ "category": 10, "question": "Ktory napoj powstaje z lisci krzewu Camellia sinensis?", "answers": ["Kawa", "Herbata", "Kakao", "Lemoniada"], "correct": 1 }
+{ "category": 10, "question": "Hummus przygotowuje sie glownie z", "answers": ["ciecierzycy", "fasoli mung", "soczewicy", "grochu"], "correct": 0 }
+{ "category": 10, "question": "Ktory owoc jest glownym skladnikiem tradycyjnego cydru?", "answers": ["gruszka", "jablko", "sliwka", "winogrono"], "correct": 1 }
+{ "category": 11, "question": "Kto namalowal Mone Lise?", "answers": ["Michelangelo", "Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso"], "correct": 1 }
+{ "category": 11, "question": "Gdzie znajduje sie muzeum Luwr?", "answers": ["Londyn", "Paryz", "Madryt", "Rzym"], "correct": 1 }
+{ "category": 11, "question": "Jak nazywa sie technika malowania na mokrym tynku?", "answers": ["Fresk", "Akwarela", "Kolaz", "Grafika"], "correct": 0 }
+{ "category": 11, "question": "Ktory artysta jest autorem Gwiazdzistej nocy?", "answers": ["Monet", "van Gogh", "Rembrandt", "Dali"], "correct": 1 }
+{ "category": 11, "question": "Balet to forma sztuki zwiazana przede wszystkim z", "answers": ["tancem", "rzezba", "literatura", "fotografia"], "correct": 0 }
+{ "category": 11, "question": "Jak nazywa sie polskie godlo?", "answers": ["Bialy Orzel", "Czarny Kruk", "Zloty Lew", "Srebrny Smok"], "correct": 0 }
+{ "category": 11, "question": "Ktory styl w sztuce kojarzy sie z impresja i gra swiatla?", "answers": ["Impresjonizm", "Barok", "Gotyk", "Klasycyzm"], "correct": 0 }
+{ "category": 12, "question": "Ile kontynentow zwykle wyroznia sie w szkolnej geografii w Polsce?", "answers": ["5", "6", "7", "8"], "correct": 2 }
+{ "category": 12, "question": "Ktory metal jest ciekly w temperaturze pokojowej?", "answers": ["Zelazo", "Rtec", "Miedz", "Aluminium"], "correct": 1 }
+{ "category": 12, "question": "Ile serc ma osmiornica?", "answers": ["1", "2", "3", "4"], "correct": 2 }
+{ "category": 12, "question": "Jak nazywa sie najwieksza wyspa swiata?", "answers": ["Grenlandia", "Madagaskar", "Borneo", "Nowa Gwinea"], "correct": 0 }
+{ "category": 12, "question": "Ktory miesiac ma zwykle 28 dni, a w roku przestepnym 29?", "answers": ["Styczen", "Luty", "Marzec", "Kwiecien"], "correct": 1 }
+{ "category": 12, "question": "Ile minut ma jedna doba?", "answers": ["600", "1200", "1440", "1680"], "correct": 2 }
+{ "category": 12, "question": "Ktore zwierze potrafi zmieniac kolor skory?", "answers": ["Kameleon", "Koala", "Panda", "Bizon"], "correct": 0 }
+{ "category": 13, "question": "Jak brzmi angielskie slowo oznaczajace kota?", "answers": ["dog", "cat", "bird", "fish"], "correct": 1 }
+{ "category": 13, "question": "Ktore slowo jest synonimem wyrazu szybki?", "answers": ["wolny", "predki", "niski", "cieply"], "correct": 1 }
+{ "category": 13, "question": "Ile liter ma polski alfabet wraz ze znakami diakrytycznymi?", "answers": ["26", "30", "32", "35"], "correct": 2 }
+{ "category": 13, "question": "Jak nazywa sie wyraz o przeciwnym znaczeniu?", "answers": ["Synonim", "Antonim", "Homonim", "Akronim"], "correct": 1 }
+{ "category": 13, "question": "Ktory jezyk jest jezykiem urzedowym w Brazylii?", "answers": ["hiszpanski", "portugalski", "francuski", "wloski"], "correct": 1 }
+{ "category": 13, "question": "Co oznacza lacinskie et cetera?", "answers": ["i tak dalej", "przed poludniem", "po fakcie", "dla przykladu"], "correct": 0 }
+{ "category": 13, "question": "Ktory wyraz jest rzeczownikiem?", "answers": ["biega", "zielony", "dom", "szybko"], "correct": 2 }
+{ "category": 14, "question": "Stolica Polski to", "answers": ["Krakow", "Warszawa", "Gdansk", "Poznan"], "correct": 1 }
+{ "category": 14, "question": "Najdluzsza rzeka Polski to", "answers": ["Odra", "Warta", "Wisla", "Bug"], "correct": 2 }
+{ "category": 14, "question": "Ktore miasto bylo dawna stolica Polski i lezy nad Wisla?", "answers": ["Krakow", "Torun", "Lublin", "Szczecin"], "correct": 0 }
+{ "category": 14, "question": "Jakie barwy ma flaga Polski?", "answers": ["bialo-czerwone", "czerwono-biale", "bialo-niebieskie", "czerwono-zolte"], "correct": 0 }
+{ "category": 14, "question": "Ktore polskie miasto lezy nad Motlawa?", "answers": ["Gdansk", "Wroclaw", "Katowice", "Rzeszow"], "correct": 0 }
+{ "category": 14, "question": "Ktory polski park narodowy chroni Tatry?", "answers": ["Bialowieski", "Tatrzanski", "Kampinoski", "Wolinski"], "correct": 1 }
+{ "category": 14, "question": "Kto jest autorem slow hymnu Polski?", "answers": ["Jozef Wybicki", "Adam Mickiewicz", "Jan Kochanowski", "Ignacy Krasicki"], "correct": 0 }

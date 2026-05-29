@@ -8,7 +8,7 @@
 
 using CategorisedQuestion = std::pair<QuestionCategory, OwnedQuestion>;
 
-constexpr const std::size_t           k_Rounds = 1; // FIXME: 8;
+constexpr const std::size_t           k_Rounds = 8;
 constexpr const std::size_t           k_CategoriesPerRound = 2;
 constexpr const int                   k_StartingMoney = 1'000'000;
 constexpr const std::string_view      k_SaveFileName = "save.file";
