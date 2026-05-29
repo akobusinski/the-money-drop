@@ -103,3 +103,33 @@
 { "category": 14, "question": "Ktore polskie miasto lezy nad Motlawa?", "answers": ["Gdansk", "Wroclaw", "Katowice", "Rzeszow"], "correct": 0 }
 { "category": 14, "question": "Ktory polski park narodowy chroni Tatry?", "answers": ["Bialowieski", "Tatrzanski", "Kampinoski", "Wolinski"], "correct": 1 }
 { "category": 14, "question": "Kto jest autorem slow hymnu Polski?", "answers": ["Jozef Wybicki", "Adam Mickiewicz", "Jan Kochanowski", "Ignacy Krasicki"], "correct": 0 }
+{ "category": 0, "question": "Czy bitwa pod Wiedniem odbyla sie w 1683 roku?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 0, "question": "Ktory wladca Polski byl nazywany Wielkim?", "answers": ["Kazimierz", "Mieszko", "Zygmunt"], "correct": 0 }
+{ "category": 1, "question": "Czy Australia jest jednoczesnie krajem i kontynentem?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 1, "question": "Ktore miasto jest stolica Czech?", "answers": ["Praga", "Brno", "Ostrawa"], "correct": 0 }
+{ "category": 2, "question": "Czy Slonce jest gwiazda?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 2, "question": "Ktory gaz dominuje w atmosferze Ziemi?", "answers": ["azot", "tlen", "argon"], "correct": 0 }
+{ "category": 3, "question": "Czy maraton ma ponad 40 kilometrow?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 3, "question": "W ktorym sporcie gra sie kijem na lodzie?", "answers": ["hokej", "rugby", "siatkowka"], "correct": 0 }
+{ "category": 4, "question": "Czy perkusja jest instrumentem rytmicznym?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 4, "question": "Ktory instrument ma smyczek?", "answers": ["skrzypce", "trabka", "flet"], "correct": 0 }
+{ "category": 5, "question": "Czy Matrix to film science fiction?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 5, "question": "Ktory bohater nosi peleryne i znak nietoperza?", "answers": ["Batman", "Superman", "Spider-Man"], "correct": 0 }
+{ "category": 6, "question": "Czy Romeo i Julia to tragedia Szekspira?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 6, "question": "Ktory gatunek literacki jest pisany wierszem?", "answers": ["poezja", "reportaz", "esej"], "correct": 0 }
+{ "category": 7, "question": "Czy HTML jest jezykiem znacznikow?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 7, "question": "Ktore urzadzenie wyswietla obraz z komputera?", "answers": ["monitor", "mysz", "router"], "correct": 0 }
+{ "category": 8, "question": "Czy zero jest liczba parzysta?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 8, "question": "Ile wynosi 12 podzielone przez 4?", "answers": ["2", "3", "4"], "correct": 1 }
+{ "category": 9, "question": "Czy grzyby naleza do osobnego krolestwa organizmow?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 9, "question": "Ktore zwierze jest plazem?", "answers": ["zaba", "jaszczurka", "golab"], "correct": 0 }
+{ "category": 10, "question": "Czy makaron jest typowym skladnikiem kuchni wloskiej?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 10, "question": "Z czego robi sie tradycyjny barszcz czerwony?", "answers": ["buraki", "marchew", "kapusta"], "correct": 0 }
+{ "category": 11, "question": "Czy teatr jest sztuka performatywna?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 11, "question": "Ktory material rzezbiarz moze obrabiac dlutem?", "answers": ["marmur", "woda", "powietrze"], "correct": 0 }
+{ "category": 12, "question": "Czy rok przestepny ma 366 dni?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 12, "question": "Ktory kolor powstaje z polaczenia niebieskiego i zoltego?", "answers": ["zielony", "fioletowy", "pomaranczowy"], "correct": 0 }
+{ "category": 13, "question": "Czy alfabet lacinski jest uzywany w jezyku polskim?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 13, "question": "Ktore slowo jest czasownikiem?", "answers": ["spiewa", "niebieski", "krzeslo"], "correct": 0 }
+{ "category": 14, "question": "Czy Polska lezy w Europie Srodkowej?", "answers": ["tak", "nie"], "correct": 0 }
+{ "category": 14, "question": "Ktore miasto jest siedziba polskiego parlamentu?", "answers": ["Warszawa", "Krakow", "Lodz"], "correct": 0 }
