@@ -144,6 +144,12 @@ std::optional<GameState> GameState::TryLoad() { // I really do wonder if a binar
 }
 
 void GameState::Save() const {
+    if (this->m_Money == 0 || this->m_CurrentRound >= this->m_Rounds.size()) {
+        if (std::filesystem::exists(g_SaveFilePath)) std::filesystem::remove(g_SaveFilePath);
+
+        return;
+    }
+
     std::filesystem::create_directories(g_DataDirectory);
 
     std::fstream file{g_SaveFilePath, std::fstream::binary | std::fstream::out | std::fstream::trunc};
