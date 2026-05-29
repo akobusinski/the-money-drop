@@ -31,14 +31,14 @@ class QuestionCategory(IntEnum):
 @dataclass
 class Question:
     question: str
-    answers: List[str]
-    correct: int # 0-based index
+    correct: str
+    incorrect: List[str]
 
 class DefinedQuestion(TypedDict):
     category: int
     question: str
-    answers:  List[str]
-    correct:  int # 0-based index
+    correct: str
+    incorrect: List[str]
 
 @dataclass
 class Assertion:
@@ -126,28 +126,24 @@ class HeaderGenerator:
         ))
 
     def generate_question_entry(self, category: QuestionCategory, question: Question):
-        answer_count = len(question.answers)
-        correct_answer = question.answers[question.correct]
-        wrong_answers = [
-            answer
-            for index, answer in enumerate(question.answers)
-            if index != question.correct
-        ]
+        answer_count = len(question.incorrect) + 1
 
         return "\tstd::pair { QuestionCategory::%s, StaticQuestion { \"%s\", \"%s\", std::array<std::string_view, k_MaxAnswers - 1> { %s }, %d } }," % (
             category,
             question.question,
-            correct_answer,
-            ", ".join(f"\"{answer}\"" for answer in wrong_answers),
+            question.correct,
+            ", ".join(f"\"{answer}\"" for answer in question.incorrect),
             answer_count,
         )
 
     def questions_with_answer_count(self, answer_count: int):
+        answer_count -= 1
+
         return (
             (category, question)
             for (category, questions) in self.categories.items()
             for question in questions
-            if len(question.answers) == answer_count
+            if len(question.incorrect) == answer_count
         )
 
     def generate_assertions(self):
@@ -178,8 +174,8 @@ def read_questions(path: pathlib.Path) -> Dict[QuestionCategory, List[Question]]
         
             questions[category].append(Question(
                 question=data["question"],
-                answers=data["answers"],
                 correct=data["correct"],
+                incorrect=data["incorrect"],
             ))
     
     return questions
