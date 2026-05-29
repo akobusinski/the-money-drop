@@ -3,12 +3,28 @@ project(PostawNaMilion LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 
-file(GLOB HEADERS include/*.hpp)
-file(GLOB SOURCES src/*.cpp)
-
 set(QUESTIONS_HEADER ${CMAKE_CURRENT_BINARY_DIR}/generated/include/questions.hpp)
 set(QUESTIONS_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/data/questions.jsonl)
 set(GENERATE_QUESTIONS_SCRIPT ${CMAKE_CURRENT_SOURCE_DIR}/scripts/generate_questions.py)
+
+set(SOURCES
+    src/main.cpp
+    src/game.cpp
+    src/game_state.cpp
+    src/game_screen.cpp
+    src/main_screen.cpp
+    src/menu.cpp
+)
+
+set(HEADERS
+    include/game.hpp
+    include/question.hpp
+    ${QUESTIONS_HEADER}
+    include/game_state.hpp
+    include/screen.hpp
+    include/screen_actions.hpp
+    include/menu.hpp
+)
 
 find_package(Python3 COMPONENTS Interpreter REQUIRED)
 
