@@ -11,7 +11,7 @@ class BaseScreen {
 
 class GameScreen : public BaseScreen {
     public:
-        GameScreen();
+        GameScreen() = default;
         explicit GameScreen(const GameState& state) : m_State(state) {}
 
         ScreenAction Show() override;

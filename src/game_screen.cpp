@@ -117,8 +117,6 @@ std::uint32_t read_bets(const OwnedQuestion &question, const std::uint32_t money
     }
 }
 
-GameScreen::GameScreen() = default;
-
 ScreenAction GameScreen::Show() {
     while (this->m_State.Money() > 0) {
         const auto questions = this->m_State.GetCurrentRoundQuestions();
