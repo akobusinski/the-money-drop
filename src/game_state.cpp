@@ -149,7 +149,7 @@ std::optional<GameState> GameState::TryLoad() { // I really do wonder if a binar
 void GameState::Save() const {
     std::filesystem::create_directories(g_DataDirectory);
 
-    std::fstream file{g_SaveFilePath, file.binary | file.out | file.trunc};
+    std::fstream file{g_SaveFilePath, std::fstream::binary | std::fstream::out | std::fstream::trunc};
     if (!file) return;
 
     std::size_t questions_per_round = 0;
@@ -177,10 +177,10 @@ void GameState::Save() const {
     }
 }
 
-const std::vector<CategorisedQuestion>* GameState::GetCurrentRoundQuestions() const {
+const std::vector<CategorisedQuestion>* GameState::GetCurrentRoundQuestions() {
     if (m_CurrentRound < 0 || m_CurrentRound >= m_Rounds.size()) {
         return nullptr;
     }
 
-    return &m_Rounds[m_CurrentRound];
+    return &m_Rounds[m_CurrentRound++];
 }
