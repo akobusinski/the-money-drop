@@ -48,10 +48,8 @@ class HeaderGenerator:
     def generate(self):
         if (len(self.content) == 0):
             self.generate_preamble()
-            self.generate_question_categories_arrays()
-            self.generate_question_arrays()
-            self.generate_random_category_function()
-            self.generate_get_questions_function()
+            self.generate_questions_array()
+            self.generate_assertion()
 
         return self.content
 
@@ -60,65 +58,39 @@ class HeaderGenerator:
             self.content += item + '\n'
         
         self.content += '\n'
-
+    
     def generate_preamble(self):
         self.append((
             "#pragma once",
-            "#include <map>",
             "#include <array>",
-            "#include <random>",
+            "#include <string_view>",
             "#include \"question.hpp\"",
         ))
     
-    def generate_question_categories_arrays(self):
+    def generate_questions_array(self):
         self.append(itertools.chain(
-            ("constexpr auto CATEGORIES = std::array {",),
-            (f"\tQuestionCategory::{category}," for category in self.categories.keys()),
+            ("constexpr const auto ALL_QUESTIONS = std::array {",),
+            (
+                "\tstd::pair { QuestionCategory::%s, StaticQuestion { \"%s\", std::array<std::string_view, k_MaxAnswers> { %s }, %d, %d } },"
+                % (
+                    category,
+                    question.question,
+                    ", ".join(f"\"{i}\"" for i in question.answers),
+                    len(question.answers),
+                    question.correct
+                )
+                for (category, questions) in self.categories.items()
+                for question in questions
+            ),
             ("};",),
         ))
     
-    def generate_question_arrays(self):
-        for (category, questions) in self.categories.items():
-            self.append(itertools.chain(
-                ("constexpr auto %s_QUESTIONS = std::array {" % str(category),),
-                ("\tQuestion { \"%s\", { %s }, %d }," % (
-                    question.question,
-                    ", ".join(f"\"{i}\"" for i in question.answers),
-                    question.correct
-                ) for question in questions),
-                ("};",)
-            ))
-    
-    def generate_random_category_function(self):
+    def generate_assertion(self):
         self.append((
-            "QuestionCategory random_category(std::mt19937 &rng) {",
-            "\tstatic std::uniform_int_distribution<std::size_t> dist(0, CATEGORIES.size() - 1);",
-            "\treturn CATEGORIES[dist(rng)];",
-            "}",
-        ))
-    
-    def generate_get_questions_function(self):
-        signature = (
-            "template <QuestionCategory Category>",
-            "constexpr const auto get_questions() {",
-        )
-
-        body = "\t"
-        for key in self.categories.keys():
-            body += '\n'.join((
-                 "if constexpr (Category == QuestionCategory::%s) {" % str(key),
-                f"\t\treturn {key}_QUESTIONS;",
-                 "\t} else ",
-            ))
-        body += '\n'.join((
-            "{",
-            "\t\tstatic_assert({}, \"No questions for category found.\")".format(" || ".join(f"Category == QuestionCategory::{i}" for i in self.categories.keys())),
-            "\t}"
-        ))
-
-        self.append(itertools.chain(
-            signature,
-            (body, "}",),
+            "static_assert(",
+            "\tk_Rounds * k_CategoriesPerRound <= ALL_QUESTIONS.size(),",
+            "\t\"Not enough questions to start a single game.\"",
+            ");",
         ))
 
 def read_questions(path: pathlib.Path) -> Dict[QuestionCategory, List[Question]]:

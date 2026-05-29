@@ -1,8 +1,8 @@
-#include <iostream>
 #include <vector>
 #include <print>
 #include <span>
 #include <optional>
+#include <utility>
 #include "screen.hpp"
 #include "game_state.hpp"
 #include "menu.hpp"
@@ -32,16 +32,16 @@ ScreenAction MainScreen::Show() {
 
     auto saved_state = GameState::TryLoad();
     auto options = create_options(saved_state.has_value());
-    MenuOption chosen = ChooseFromMenu("Prosze wybrac jedna z opcji:", std::span { options });
 
-    switch (chosen) {
+    switch (ChooseFromMenu("Prosze wybrac jedna z opcji:", std::span { options })) {
         case MenuOption::New:
             return PushScreen { std::make_unique<GameScreen>() };
         case MenuOption::Resume:
-            std::println("not implemented");
-            // TODO: Pass `saved_state` into the screen
-            return PushScreen { std::make_unique<GameScreen>() };
+            return PushScreen { std::make_unique<GameScreen>(std::move(*saved_state)) };
         case MenuOption::Exit:
             return CloseScreen {};
     }
+
+    // unreachable, could mark with std::unreachable()
+    return CloseScreen {};
 }

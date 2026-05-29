@@ -1,4 +1,5 @@
 #pragma once
+#include "game_state.hpp"
 #include "screen_actions.hpp"
 
 class BaseScreen {
@@ -10,7 +11,12 @@ class BaseScreen {
 
 class GameScreen : public BaseScreen {
     public:
+        GameScreen();
+        GameScreen(const GameState& state) : m_State(state) {}
+
         ScreenAction Show() override;
+    private:
+        GameState m_State;
 };
 
 class MainScreen : public BaseScreen {
