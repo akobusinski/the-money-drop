@@ -4,11 +4,12 @@
 #include <optional>
 #include <print>
 #include <span>
+#include <string>
 #include <string_view>
 
 template <typename T>
 struct MenuItem {
-    std::string_view label;
+    std::string label;
     T value;
 };
 
