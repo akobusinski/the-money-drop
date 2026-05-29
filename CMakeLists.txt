@@ -13,7 +13,6 @@ set(SOURCES
     src/game_state.cpp
     src/game_screen.cpp
     src/main_screen.cpp
-    src/menu.cpp
 )
 
 set(HEADERS

@@ -1,5 +1,7 @@
 #pragma once
+#include <concepts>
 #include <iostream>
+#include <optional>
 #include <print>
 #include <span>
 #include <string_view>
@@ -10,7 +12,39 @@ struct MenuItem {
     T value;
 };
 
-std::size_t ReadSizeInRange(std::string_view input_label, std::size_t min, std::size_t max);
+template <std::unsigned_integral T>
+T ReadSizeInRange(
+    const std::optional<std::string_view> input_label,
+    const T min,
+    const T max,
+    const std::optional<T> default_value = std::nullopt
+) {
+    if (input_label.has_value()) {
+        std::println("{}", input_label.value());
+    }
+
+    while (true) {
+        std::print("> ");
+
+        std::string input;
+        std::getline(std::cin, input);
+
+        if (default_value && input.empty()) {
+            return *default_value;
+        }
+
+        T choice = 0;
+        const auto begin = input.data();
+        const auto end = begin + input.size();
+        const auto [position, error] = std::from_chars(begin, end, choice);
+
+        if (error == std::errc{} && position == end && choice >= min && choice <= max) {
+            return choice;
+        }
+
+        std::println("Niepoprawny wybor, sprobuj jeszcze raz.");
+    }
+}
 
 template <typename T>
 T ChooseFromMenu(std::string_view menu_label, const std::span<MenuItem<T>> &items) {
@@ -22,6 +56,6 @@ T ChooseFromMenu(std::string_view menu_label, const std::span<MenuItem<T>> &item
         std::println("{}. {}", i + 1, value.label);
     }
 
-    const auto choice = ReadSizeInRange("", 1, items.size());
+    const auto choice = ReadSizeInRange<std::size_t>(std::nullopt, 1, items.size());
     return items[choice - 1].value;
 }
