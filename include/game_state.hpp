@@ -31,8 +31,12 @@ class GameState {
         }
 
         void Save() const;
-        [[nodiscard]] const std::vector<CategorisedQuestion>* GetCurrentRoundQuestions() const;
-        
+        [[nodiscard]] const std::vector<CategorisedQuestion>* GetCurrentRoundQuestions();
+
+        [[nodiscard]] std::size_t Round() const {
+            return this->m_CurrentRound;
+        }
+
         [[nodiscard]] std::uint32_t Money() const {
             return this->m_Money;
         }
