@@ -12,7 +12,7 @@ class BaseScreen {
 class GameScreen : public BaseScreen {
     public:
         GameScreen();
-        GameScreen(const GameState& state) : m_State(state) {}
+        explicit GameScreen(const GameState& state) : m_State(state) {}
 
         ScreenAction Show() override;
     private:
