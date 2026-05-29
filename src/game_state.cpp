@@ -68,7 +68,6 @@ GameState::GameState() : m_Money(k_StartingMoney), m_CurrentRound(0) {
 // { <answer> x {answer_count} }
 
 std::optional<GameState> GameState::TryLoad() { // I really do wonder if a binary format would be easier than all this string manipulation
-    std::println("{}", g_SaveFilePath.string());
     if (!std::filesystem::is_directory(g_DataDirectory)) return {};
     if (!std::filesystem::exists(g_SaveFilePath)) return {};
     
