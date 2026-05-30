@@ -9,6 +9,12 @@
 #include "game_state.hpp"
 #include "questions.hpp"
 
+/**
+ * @brief Returns the platform-specific data directory path
+ *
+ * @param name Name of the application directory
+ * @return The path to the application's data directory
+ */
 std::filesystem::path GetDataDirectory(const std::string &name) {
 #if defined(_WIN32)
     const char* appdata = std::getenv("APPDATA");

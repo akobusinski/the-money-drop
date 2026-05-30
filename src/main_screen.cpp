@@ -7,12 +7,21 @@
 #include "game_state.hpp"
 #include "menu.hpp"
 
+/**
+ * @brief Available ooptions in the main menu
+ */
 enum class MenuOption {
-    New,
-    Resume,
-    Exit,
+    New,    ///< Start a new game
+    Resume, ///< Load an existing game
+    Exit,   ///< Exit the application
 };
 
+/**
+ * @brief Creates the list of main menu options
+ *
+ * @param save_file_exists Whether the save file is available
+ * @return Menu items that can be passed to ChooseFromMenu
+ */
 std::vector<MenuItem<MenuOption>> create_options(bool save_file_exists) {
     std::vector<MenuItem<MenuOption>> options;
     options.reserve(save_file_exists ? 3 : 2);

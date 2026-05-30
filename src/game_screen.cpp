@@ -17,6 +17,12 @@ struct NeedsToBeEmpty {};
 struct NoMoney {};
 using BetAction = std::variant<EditAnswer, Ready, NeedsToBeEmpty, NoMoney>;
 
+/**
+ * @brief Creates menu options for a list of categorised questions
+ *
+ * @param categories Collection of categories paired with their questions
+ * @return Menu items that can be passed to `ChooseFromMenu`
+ */
 std::vector<MenuItem<const OwnedQuestion*>> create_category_options(const std::vector<CategorisedQuestion> &categories) {
     std::vector<MenuItem<const OwnedQuestion*>> options;
     options.reserve(categories.size());
@@ -32,6 +38,12 @@ std::vector<MenuItem<const OwnedQuestion*>> create_category_options(const std::v
 }
 
 // used once, I reckon the compiler would inline it, but I would rather force it than gamble
+/**
+ * @brief Counts the amount of answers that the player has bet on
+ *
+ * @param bets The bets that the player has placed
+ * @return The amount of answers that the player has not bet on
+ */
 inline std::size_t count_empty_answers(const std::vector<std::uint32_t> &bets) {
     std::size_t count = 0;
 
@@ -42,6 +54,14 @@ inline std::size_t count_empty_answers(const std::vector<std::uint32_t> &bets) {
     return count;
 }
 
+/**
+ * @brief Creates menu options for editing the player's bets
+ *
+ * @param question The current question that the player is answering
+ * @param bets The bets that the player has placed
+ * @param money The amount of money that the player has available to bet
+ * @return Menu items that can be passed to `ChooseFromMenu`
+ */
 std::vector<MenuItem<BetAction>> create_bet_options(
     const OwnedQuestion &question,
     std::vector<std::uint32_t> &bets,
@@ -75,6 +95,13 @@ std::vector<MenuItem<BetAction>> create_bet_options(
     return options;
 }
 
+/**
+ * @brief Lets the player distribute their money across multiple answers
+ *
+ * @param question The question that the player is betting on
+ * @param money The amount of money that the player currently has
+ * @return The amount of money placed on the correct answer
+ */
 std::uint32_t read_bets(const OwnedQuestion &question, const std::uint32_t money) {
     std::vector<std::uint32_t> bets(question.answers.size(), 0);
     std::uint32_t remaining_money = money;
