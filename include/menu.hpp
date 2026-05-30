@@ -6,6 +6,8 @@
 #include <span>
 #include <string>
 #include <string_view>
+#include <charconv>
+#include <cassert>
 
 /**
  * @brief An item which can be rendered by `ChooseFromMenu`
@@ -43,10 +45,18 @@ T ReadSizeInRange(
         std::print("> ");
 
         std::string input;
-        std::getline(std::cin, input);
+        if (!std::getline(std::cin, input)) {
+            if (default_value.has_value()) {
+                return default_value.value();
+            }
+
+            // as far as I'm aware, std::string will take ANY character, so the only way we could get here is with an EOF
+            std::cin.clear();
+            std::println("{}", "Nie udalo sie odczytac danych.");
+        }
 
         if (default_value && input.empty()) {
-            return *default_value;
+            return default_value.value();
         }
 
         T choice = 0;
@@ -72,6 +82,7 @@ T ReadSizeInRange(
  */
 template <typename T>
 T ChooseFromMenu(std::string_view menu_label, const std::span<MenuItem<T>> &items) {
+    assert(!menu_label.empty());
     std::println("{}", menu_label);
 
     for (std::size_t i = 0; i < items.size(); i++) {
