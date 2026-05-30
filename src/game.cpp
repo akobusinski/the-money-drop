@@ -7,7 +7,7 @@ Game::Game() {
     this->m_MenuHistory.push(std::make_unique<MainScreen>());
 }
 
-void Game::run() {
+void Game::Run() {
     while (!this->m_MenuHistory.empty()) {
         ScreenAction action = this->m_MenuHistory.top()->Show();
 

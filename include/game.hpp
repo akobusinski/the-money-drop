@@ -8,7 +8,7 @@ class Game {
         Game();
         ~Game() = default;
 
-        void run();
+        void Run();
     private:
         std::stack<std::unique_ptr<BaseScreen>> m_MenuHistory;
 };
