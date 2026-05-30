@@ -1,4 +1,6 @@
 #pragma once
+#include <utility>
+
 #include "game_state.hpp"
 #include "screen_actions.hpp"
 
@@ -31,7 +33,7 @@ class GameScreen : public BaseScreen {
          * 
          * @param state The game state to copy
          */
-        explicit GameScreen(const GameState& state) : m_State(state) {}
+        explicit GameScreen(GameState state) : m_State(std::move(state)) {}
 
         ScreenAction Show() override;
     private:

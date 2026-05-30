@@ -46,7 +46,7 @@ ScreenAction MainScreen::Show() {
         case MenuOption::New:
             return PushScreen { std::make_unique<GameScreen>() };
         case MenuOption::Resume:
-            return PushScreen { std::make_unique<GameScreen>(std::move(*saved_state)) };
+            return PushScreen { std::make_unique<GameScreen>(*saved_state) };
         case MenuOption::Exit:
             return CloseScreen {};
     }
