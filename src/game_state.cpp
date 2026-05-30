@@ -6,6 +6,7 @@
 #include <sstream>
 #include <algorithm>
 #include <utility>
+#include <cstdlib>
 #include "game_state.hpp"
 #include "questions.hpp"
 
@@ -127,8 +128,8 @@ GameState::GameState() : m_Money(k_StartingMoney), m_CurrentRound(0) {
 std::optional<GameState> GameState::TryLoad() { // I really do wonder if a binary format would be easier than all this string manipulation
     if (!std::filesystem::is_directory(g_DataDirectory)) return {};
     if (!std::filesystem::exists(g_SaveFilePath)) return {};
-    
-    std::fstream file{g_SaveFilePath, std::fstream::binary | std::fstream::in};
+
+    std::fstream file{g_SaveFilePath, std::fstream::in};
     if (!file) return {};
 
     std::string line;
@@ -142,7 +143,9 @@ std::optional<GameState> GameState::TryLoad() { // I really do wonder if a binar
         if (!std::getline(file, line)) return {};
 
         std::stringstream stream(line);
-        stream >> money >> current_round >> round_count >> questions_per_round;
+        if (!(stream >> money >> current_round >> round_count >> questions_per_round)) {
+            return {};
+        }
     }
     
     std::vector<std::vector<CategorisedQuestion>> rounds;
@@ -209,7 +212,7 @@ void GameState::Save() const {
 
     std::filesystem::create_directories(g_DataDirectory);
 
-    std::fstream file{g_SaveFilePath, std::fstream::binary | std::fstream::out | std::fstream::trunc};
+    std::fstream file{g_SaveFilePath, std::fstream::out | std::fstream::trunc};
     if (!file) return;
 
     std::size_t questions_per_round = 0;
