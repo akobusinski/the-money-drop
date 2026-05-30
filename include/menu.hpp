@@ -7,12 +7,27 @@
 #include <string>
 #include <string_view>
 
+/**
+ * @brief An item which can be rendered by `ChooseFromMenu`
+ * 
+ * @tparam T The stored value
+ */
 template <typename T>
 struct MenuItem {
     std::string label;
     T value;
 };
 
+/**
+ * @brief Prompts the user to enter a number in a provided range
+ * 
+ * @tparam T Integer type to use
+ * @param input_label String to render when prompting the user
+ * @param min Minimum value that the user can enter
+ * @param max Maximum value that the user can enter
+ * @param default_value Default value to return when the user presses enter, if `std::nullopt` does not allow an empty input.
+ * @return T The amount chosen by the user, or default, if applicable
+ */
 template <std::unsigned_integral T>
 T ReadSizeInRange(
     const std::optional<std::string_view> input_label,
@@ -47,6 +62,14 @@ T ReadSizeInRange(
     }
 }
 
+/**
+ * @brief Prompts the user to select an option
+ * 
+ * @tparam T Type of the value associated with each menu item
+ * @param menu_label String to render when prompting the user
+ * @param items List of items to let the user choose from
+ * @return T Value associated with the selected by the user item
+ */
 template <typename T>
 T ChooseFromMenu(std::string_view menu_label, const std::span<MenuItem<T>> &items) {
     std::println("{}", menu_label);

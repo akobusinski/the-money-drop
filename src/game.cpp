@@ -16,7 +16,7 @@ void Game::Run() {
                 this->m_MenuHistory.pop();
             },
             [&](PushScreen &arg) {
-                this->m_MenuHistory.push(std::move(arg.menu));
+                this->m_MenuHistory.push(std::move(arg.screen));
             },
         }, action);
     }
