@@ -12,7 +12,7 @@
 std::filesystem::path GetDataDirectory(const std::string &name) {
 #if defined(_WIN32)
     const char* appdata = std::getenv("APPDATA");
-    if (appData) return std::string(appdata) + "\\" + name;
+    if (appdata) return std::string(appdata) + "\\" + name;
 #elif defined(__linux__)
     const char* xdg = std::getenv("XDG_DATA_HOME");
     if (xdg) return std::string(xdg) + "/" + name;
