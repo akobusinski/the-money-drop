@@ -184,12 +184,14 @@ def read_questions(path: pathlib.Path) -> Dict[QuestionCategory, List[Question]]
 
 def main():
     argv = sys.argv
-    if len(argv) < 2:
+    if len(argv) < 3:
         print(f"Missing required arguments: {argv[0]} <input> <output>", file=sys.stderr)
         return
 
     input = pathlib.Path(argv[1])
     output = pathlib.Path(argv[2])
+    output.parent.mkdir(parents=True, exist_ok=True)
+
     questions = read_questions(input)
 
     header_generator = HeaderGenerator(questions)
